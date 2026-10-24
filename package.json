@@ -1,0 +1,51 @@
+{
+  "name": "yapin.js",
+  "version": "0.1.0",
+  "description": "A fast, modular, zero-dependency framework for building Yapin’ bots, in the style of discord.js.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "types",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "peerDependencies": {
+    "@livekit/rtc-node": "*",
+    "ws": "*"
+  },
+  "peerDependenciesMeta": {
+    "@livekit/rtc-node": {
+      "optional": true
+    },
+    "ws": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "yapin",
+    "yapper",
+    "bot",
+    "framework",
+    "chat",
+    "api",
+    "discord.js"
+  ],
+  "license": "MIT",
+  "sideEffects": false
+}
