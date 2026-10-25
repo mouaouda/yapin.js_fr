@@ -76,10 +76,4 @@ export class ClientVoiceManager {
   async destroy() {
     await Promise.allSettled([...this.connections.values()].map((c) => c.leave()));
   }
-
-  /** The bot was dropped from a call (a moderator disconnected it). */
-  _onSelfLeave(state) {
-    const connection = this.connections.get(state.serverId);
-    if (connection && connection.channelId === state.channelId) connection._remoteDisconnect();
-  }
 }
