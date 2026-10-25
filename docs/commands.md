@@ -12,7 +12,7 @@ On Yapin’, commands are messages that start with a prefix: `/ping` or `!ping`.
 
 ```js
 client.commands.register({
-  name: 'ban',                      // 1–32 lowercase letters, numbers, - or _
+  name: 'ban',                      // 1 to 32 lowercase letters, numbers, - or _
   description: 'Ban someone',       // up to 100 characters, shown in the "/" menu and /help
   aliases: ['b'],                   // also answer to /b
   category: 'Moderation',           // groups /help (modules set it to their name by default)

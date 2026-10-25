@@ -48,7 +48,8 @@ export class CommandHandler {
     this._synced = null;
     this._syncTimer = null;
     const help = this.options.help;
-    if (help) this.register(createHelpCommand(this, typeof help === 'object' ? help : {}));
+    // Built-ins give way to a command of the same name from anywhere.
+    if (help) this.register(createHelpCommand(this, typeof help === 'object' ? help : {})).builtin = true;
   }
 
   get options() {
@@ -71,7 +72,7 @@ export class CommandHandler {
     const where = (c) => c.owner?.label ?? c.file ?? 'your main file';
     // Registering the same name again from the same place (main file, module or file) replaces it.
     const existing = this.registry.get(command.name);
-    if (existing && (existing.owner !== command.owner || existing.file !== command.file)) {
+    if (existing && !existing.builtin && (existing.owner !== command.owner || existing.file !== command.file)) {
       throw conflict(`/${command.name} is in both ${where(existing)} and ${where(command)}. Rename one of them.`);
     }
     const aliasOf = this.aliases.get(command.name);

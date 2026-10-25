@@ -9,7 +9,7 @@ const STYLES = new Set(Object.values(ButtonStyle));
  *   ButtonBuilder.success('Yes', 'vote:yes')          // shortcut
  *   ButtonBuilder.link('Rules', 'https://example.com') // link buttons open a URL, nothing is sent to the bot
  *
- * Every button needs a label (80) or an emoji. Non-link buttons need a custom_id (1–100, unique in a message).
+ * Every button needs a label (80) or an emoji. Non-link buttons need a custom_id (1 to 100, unique in a message).
  */
 export class ButtonBuilder {
   constructor(data = {}) {
@@ -41,7 +41,7 @@ export class ButtonBuilder {
     return new ButtonBuilder(typeof other?.toJSON === 'function' ? other.toJSON() : other);
   }
 
-  /** 'primary' | 'secondary' | 'success' | 'danger' | 'link', ButtonStyle.X, or 1–5. */
+  /** 'primary' | 'secondary' | 'success' | 'danger' | 'link', ButtonStyle.X, or 1 to 5. */
   setStyle(style) {
     const resolved = typeof style === 'number' ? STYLE_NUMBERS[style] : style;
     if (isValidationEnabled() && !STYLES.has(resolved)) fail(`Unknown button style "${style}"`);

@@ -728,7 +728,7 @@ export interface ChannelEditOptions {
   readOnly?: boolean;
   /** With readOnly: the roles that can post. */
   postRoles?: (Role | Snowflake)[];
-  /** Seconds, 0–21600. */
+  /** Seconds, 0 to 21600. */
   slowmode?: number;
 }
 

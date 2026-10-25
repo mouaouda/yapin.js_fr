@@ -131,7 +131,7 @@ client.modules.watch(); // edit modules/fun.js, save, and it reloads
 
 ## Requirements
 
-- Node.js 18.17 or newer. For the WebSocket gateway, use Node 22+ or install `ws` (Node 18–21 poll without it).
+- Node.js 18.17 or newer. For the WebSocket gateway, use Node 22+ or install `ws` (Node 18 to 21 poll without it).
 - Optional: `@livekit/rtc-node` and ffmpeg for music bots.
 
 ## Testing
