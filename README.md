@@ -2,7 +2,7 @@
 
 A fast, modular framework for building [Yapin’](https://www.yapin.gg) bots. If you've used discord.js, you already know most of it.
 
-- **Zero dependencies.** It runs on Node 18+, Bun and Deno. Voice is optional and uses `@livekit/rtc-node`.
+- **Zero dependencies.** It runs on Node 18+ and uses only standard APIs, so Bun and Deno's Node compatibility should work too. Voice is optional and uses `@livekit/rtc-node`.
 - **A discord.js-style API.** `Client`, `Events`, `Collection`, managers with caches, `EmbedBuilder`, `ButtonBuilder`, `ActionRowBuilder`, `ContainerBuilder`, collectors, `message.reply()`, `member.timeout()`, and so on.
 - **A complete command framework.** Typed arguments, subcommands, aliases, cooldowns, permission and role checks, middleware, a built-in `/help`, and loading from folders. Commands are registered with Yapin’ so they show up in the `/` menu.
 - **Reliable events.** It uses the WebSocket gateway when available and falls back to long polling by itself. It never drops or repeats an event, and it can catch up after a restart.
@@ -69,7 +69,7 @@ There are runnable bots in [examples/](examples/).
 
 ## Examples at a glance
 
-**Buttons**
+### Buttons
 
 ```js
 import { ActionRowBuilder, ButtonBuilder } from 'yapin.js';
@@ -82,7 +82,7 @@ client.command('vote', 'Pizza tonight?', (ctx) => ctx.reply({
 client.button('vote:{choice}', (i) => i.ephemeral(`You voted ${i.params.choice}`));
 ```
 
-**Moderation with checks and typed options**
+### Moderation with checks and typed options
 
 ```js
 client.commands.register({
@@ -103,7 +103,7 @@ client.commands.register({
 });
 ```
 
-**Waiting for an answer**
+### Waiting for an answer
 
 ```js
 client.command('quiz', 'A quick question', async (ctx) => {
@@ -113,7 +113,7 @@ client.command('quiz', 'A quick question', async (ctx) => {
 });
 ```
 
-**A module file with hot reload**
+### A module file with hot reload
 
 ```js
 // modules/fun.js

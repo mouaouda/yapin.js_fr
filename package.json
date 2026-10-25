@@ -23,7 +23,7 @@
     "node": ">=18.17"
   },
   "scripts": {
-    "test": "node --test test/"
+    "test": "node --test \"test/*.test.js\""
   },
   "peerDependencies": {
     "@livekit/rtc-node": "*",

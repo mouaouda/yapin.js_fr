@@ -351,7 +351,7 @@ export class CommandHandler {
     else {
       tagError(error, { command: ctx.command.path, module: ctx.command.owner?.name });
       if (client.listenerCount(Events.CommandError)) client.emit(Events.CommandError, error, ctx);
-      else client._reportError(error, { where: `/${ctx.command.path}` });
+      else client._reportError(error);
     }
     if (this.options.replyOnError === false || error?.silent) return;
     let reply;
