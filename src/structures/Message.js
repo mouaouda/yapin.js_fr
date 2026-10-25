@@ -61,14 +61,15 @@ export class Message extends Base {
       this.partial = false;
       this._mentions = null;
     }
-    if ('author_id' in data || 'author' in data) {
-      const author = data.author && typeof data.author === 'object' ? data.author : null;
-      const authorId = String(data.author_id ?? author?.id);
-      const userData = author ? { ...author, id: author.id ?? authorId } : { id: authorId };
+    const author = data.author && typeof data.author === 'object' ? data.author : null;
+    const authorId = data.author_id ?? author?.id;
+    if (authorId != null) {
+      const userData = author ? { ...author, id: String(authorId) } : { id: String(authorId) };
       if (typeof data.author === 'string') userData.username = data.author;
       if ('author_bot' in data) userData.bot = Boolean(data.author_bot);
       this.author = this.client.users._add(userData);
     }
+    this.author ??= null;
     if ('embeds' in data) this.embeds = data.embeds ?? [];
     if ('components' in data) this.components = data.components ?? [];
     if ('created_at' in data) this.createdTimestamp = data.created_at ? Date.parse(data.created_at) : null;
