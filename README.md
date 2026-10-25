@@ -1,3 +1,5 @@
+![yapin.js: JavaScript Development Framework](YapinAssets/yapinjsicon.png)
+
 # yapin.js
 
 A fast, modular framework for building [Yapin’](https://www.yapin.gg) bots. If you've used discord.js, you already know most of it.
