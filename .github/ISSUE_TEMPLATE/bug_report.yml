@@ -1,0 +1,53 @@
+name: Bug report
+description: Something in yapin.js doesn't work the way the docs say it should.
+labels: [bug, needs triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. **Never paste your bot token**; if you did, reset it in Settings → Developer.
+        For "how do I..." questions, please use [Discussions](https://github.com/yapin-js/yapin.js/discussions) instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you expected, and what happened instead. Include any error message and stack trace.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Code to reproduce
+      description: The smallest bot that shows the problem.
+      render: js
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: yapin.js version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Runtime and version
+      description: Output of `node --version`, or your Bun or Deno version.
+      placeholder: v22.11.0
+    validations:
+      required: true
+  - type: dropdown
+    id: transport
+    attributes:
+      label: How does your bot receive events?
+      options:
+        - WebSocket gateway
+        - Long polling
+        - Event webhooks
+        - Not sure
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: "Optional packages (ws, @livekit/rtc-node), hosting, OS, logs with `logger: 'debug'` (remove anything private)."

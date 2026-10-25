@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [dependencies, github-actions]
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns: ['*']
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [dependencies, javascript]
+    commit-message:
+      prefix: deps
+      prefix-development: deps-dev
+    versioning-strategy: increase
+    ignore:
+      # Node's type definitions track the oldest supported Node version (see engines).
+      - dependency-name: '@types/node'
+        update-types: [version-update:semver-major]
+    groups:
+      dev-dependencies:
+        dependency-type: development
+        update-types: [minor, patch]

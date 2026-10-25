@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or help
+    url: https://github.com/yapin-js/yapin.js/discussions/categories/q-a
+    about: Ask how to do something in Discussions.
+  - name: Security vulnerability
+    url: https://github.com/yapin-js/yapin.js/security/advisories/new
+    about: Report security problems privately, never in a public issue.
+  - name: Problem with Yapin’ itself
+    url: https://www.yapin.gg
+    about: Accounts, servers, the app and bot hosting are run by Yapin’, not this project.

@@ -1,0 +1,29 @@
+name: Dependabot auto-merge
+
+# Approves and queues minor and patch updates to merge once CI passes.
+# Major updates are left for a maintainer to review.
+
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  auto-merge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'yapin-js/yapin.js'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - id: meta
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+      - if: steps.meta.outputs.update-type != 'version-update:semver-major'
+        run: |
+          # Approving needs "Allow GitHub Actions to create and approve pull requests" in the org and repo
+          # Actions settings. Without it, auto-merge still waits for a maintainer's approval.
+          gh pr review --approve "$PR_URL" || echo "::warning::Couldn't approve; a maintainer needs to approve this PR."
+          gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

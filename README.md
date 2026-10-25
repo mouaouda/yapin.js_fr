@@ -140,7 +140,11 @@ client.modules.watch(); // edit modules/fun.js, save, and it reloads
 npm test
 ```
 
-The test suite runs entirely offline against a mock Yapin’ API. It covers login, commands, buttons, gateway behaviour, modules and collectors.
+The test suite runs entirely offline against a mock Yapin’ API. It covers login, commands, buttons, gateway behaviour, modules and collectors. `npm run typecheck` checks the TypeScript declarations.
+
+## Contributing
+
+Bug reports, docs fixes and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) to get started, and [SUPPORT.md](SUPPORT.md) if you need help. Please report security problems privately as described in [SECURITY.md](SECURITY.md). Everyone taking part is expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 

@@ -281,6 +281,7 @@ test('events delivered by webhook and by polling are handled once', async () => 
 
 test('modules load, register, unload and reload from files', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'yapin-mod-'));
+  await writeFile(join(dir, 'package.json'), '{"type":"module"}');
   const index = pathToFileURL(join(process.cwd(), 'src', 'index.js')).href;
   const file = join(dir, 'fun.js');
   const write = (reply) => writeFile(file, `
@@ -322,6 +323,7 @@ test('modules load, register, unload and reload from files', async () => {
 
 test('command files load from a folder', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'yapin-cmd-'));
+  await writeFile(join(dir, 'package.json'), '{"type":"module"}');
   await writeFile(join(dir, 'hello.js'), `export default { name: 'hello', description: 'Hi', run: (ctx) => ctx.reply('hello ' + ctx.author.username) };`);
   await writeFile(join(dir, '_helper.js'), `throw new Error('helpers are skipped');`);
   await writeFile(join(dir, 'djs.js'), `export const data = { name: 'djs', description: 'discord.js style' }; export async function execute(ctx) { await ctx.reply('djs ok'); }`);

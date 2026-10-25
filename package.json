@@ -2,6 +2,14 @@
   "name": "yapin.js",
   "version": "0.1.0",
   "description": "A fast, modular, zero-dependency framework for building Yapin’ bots, in the style of discord.js.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yapin-js/yapin.js.git"
+  },
+  "homepage": "https://github.com/yapin-js/yapin.js#readme",
+  "bugs": {
+    "url": "https://github.com/yapin-js/yapin.js/issues"
+  },
   "type": "module",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
@@ -23,7 +31,12 @@
     "node": ">=18.17"
   },
   "scripts": {
-    "test": "node --test \"test/*.test.js\""
+    "test": "node --test test/*.test.js",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "typescript": "^7.0.2"
   },
   "peerDependencies": {
     "@livekit/rtc-node": "*",

@@ -102,6 +102,7 @@ test('interaction updates with a V2 layout set the flag; ephemeral buttons are r
 test('a command file can replace the built-in /help', async () => {
   const client = makeClient({ commands: { help: true } });
   const dir = await mkdtemp(join(tmpdir(), 'yapin-help-'));
+  await writeFile(join(dir, 'package.json'), '{"type":"module"}');
   await writeFile(join(dir, 'help.js'), `export default { name: 'help', description: 'Custom', run: (ctx) => ctx.reply('my help') };`);
   await client.commands.load(dir);
   assert.equal(client.commands.get('help').description, 'Custom');
